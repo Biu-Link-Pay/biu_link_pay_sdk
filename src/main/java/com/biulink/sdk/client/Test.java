@@ -69,7 +69,7 @@ public class Test {
                 "    \"feeRatio\": \"0.01\",\n" +
                 "    \"deductionMethod\": OUTER_BUCKLE\n" +
                 "}";
-        APIResponse<ChannelInResponseVo> channelInResponseVoAPIResponse=biuLinkPayClient.createOrder().execute(gson.fromJson(json, MerchantPaymentRequestVo.class));
+        APIResponse<ChannelInResponseVo> channelInResponseVoAPIResponse = biuLinkPayClient.createOrder().execute(gson.fromJson(json, MerchantPaymentRequestVo.class));
         System.out.println(gson.toJson(channelInResponseVoAPIResponse));
     }
 }
