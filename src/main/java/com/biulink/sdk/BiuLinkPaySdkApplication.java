@@ -1,0 +1,13 @@
+package com.biulink.sdk;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class BiuLinkPaySdkApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(BiuLinkPaySdkApplication.class, args);
+    }
+
+}
