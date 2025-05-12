@@ -1,3 +1,5 @@
+this's sdk api demo
+
 @org.junit.Test
     public void aa() throws BiuLinkPayException {
 
@@ -44,10 +46,10 @@
                 "    \"orderToken\": \"USDT\",\n" +
                 "    \"orderNetwork\": \"BSC\",\n" +
                 "    \"expiredTime\": 100,\n" +
-                "    \"settlementAddress\": \"150151157\",\n" +
-                "    \"redirectUrl\": \"https://www.baidu.com\",\n" +
-                "    \"callbackUrl\": \"https://biulink.online/api/pay/callback/gate\",\n" +
-                "    \"refundCallbackUrl\": \"https://biulink.online/api/pay/callback/gate\",\n" +
+                "    \"settlementAddress\": \"****\",\n" +
+                "    \"redirectUrl\": \"https://redirectUrl\",\n" +
+                "    \"callbackUrl\": \"https://callbackUrl\",\n" +
+                "    \"refundCallbackUrl\": \"https://refundCallbackUrl\",\n" +
                 "    \"fiatUnit\": \"VND\",\n" +
                 "    \"currencyType\": \"CRYPTO\",\n" +
                 "    \"fee\": \"0.1\",\n" +
