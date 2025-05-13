@@ -7,13 +7,14 @@ import com.biulink.sdk.vo.BiuLinkPayConfig;
 import com.biulink.sdk.vo.request.MerchantPaymentRequestVo;
 import com.biulink.sdk.vo.response.ChannelInResponseVo;
 import com.google.gson.Gson;
+import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Test {
+public class Tests {
 
-    @org.junit.Test
+    @Test
     public void aa() throws BiuLinkPayException {
 
         Gson gson = GsonUtil.gsonParse();
