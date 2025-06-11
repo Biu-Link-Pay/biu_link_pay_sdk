@@ -6,7 +6,9 @@ public interface PaymentUrl {
 
     String queryUrl = "/api/pay/merchant/paymentQuery";
 
-    String insertUrl = "/api/pay/merchant/createOrder";
+    String buyOrderUrl = "/api/pay/merchant/buyOrder";
+
+    String sellOrderUrl = "/api/pay/merchant/sellOrder";
 
     String paymentMethod = "/api/pay/merchant/paymentMethods";
 

@@ -8,7 +8,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class MerchantPaymentRequestVo {
+public class MerchantBuyRequestVo {
 
     /**
      * 交易号

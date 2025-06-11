@@ -8,9 +8,9 @@ public enum ExchangeEnum {
     BINANCE("BINANCE"),
 
     /**
-     * gate
+     * wallet
      */
-    GATE("GATE"),
+    WALLET("WALLET"),
 
     ;
 

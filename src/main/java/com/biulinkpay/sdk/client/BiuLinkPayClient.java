@@ -4,9 +4,7 @@ import com.biulinkpay.sdk.apiresponse.APIResponse;
 import com.biulinkpay.sdk.common.BiuLinkPayRequestUtil;
 import com.biulinkpay.sdk.url.PaymentUrl;
 import com.biulinkpay.sdk.vo.BiuLinkPayConfig;
-import com.biulinkpay.sdk.vo.request.MerchantPaymentQueryRequestVo;
-import com.biulinkpay.sdk.vo.request.MerchantPaymentRequestVo;
-import com.biulinkpay.sdk.vo.request.RateRequestVo;
+import com.biulinkpay.sdk.vo.request.*;
 import com.biulinkpay.sdk.vo.response.ChannelInResponseVo;
 import com.biulinkpay.sdk.vo.response.MerchantPaymentMethodResponseVo;
 import com.biulinkpay.sdk.vo.response.MerchantPaymentQueryResponseVo;
@@ -41,8 +39,12 @@ public class BiuLinkPayClient extends BiuLinkPayRequestUtil {
         return requestData -> postRequest(PaymentUrl.queryUrl, requestData, APIResponse.class);
     }
 
-    public BiuLinkPayOperation<MerchantPaymentRequestVo, APIResponse<ChannelInResponseVo>> createOrder() {
-        return requestData -> postRequest(PaymentUrl.insertUrl, requestData, APIResponse.class);
+    public BiuLinkPayOperation<MerchantBuyRequestVo, APIResponse<ChannelInResponseVo>> buyOrder() {
+        return requestData -> postRequest(PaymentUrl.buyOrderUrl, requestData, APIResponse.class);
+    }
+
+    public BiuLinkPayOperation<MerchantSellRequestVo, APIResponse<ChannelOutResponseVo>> sellOrder() {
+        return requestData -> postRequest(PaymentUrl.sellOrderUrl, requestData, APIResponse.class);
     }
 
     public BiuLinkPayOperation<RateRequestVo, APIResponse<RateQueryResponseVo>> rateQuery() {
