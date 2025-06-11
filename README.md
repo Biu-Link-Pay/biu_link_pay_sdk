@@ -1,4 +1,24 @@
-this's sdk api demo
+# Maven dependency
+
+add the following dependencies to your 'pom. xml' file：
+
+```
+<dependency>
+    <groupId>com.biulinkpay</groupId>
+    <artifactId>biu-link-pay-sdk</artifactId>
+    <version>1.0.4</version>
+</dependency>
+```
+
+### mirroring Configuration
+```
+<mirror>
+    <id>central</id>
+    <name>Maven Central</name>
+    <url>https://repo1.maven.org/maven2/</url>
+    <mirrorOf>central</mirrorOf>
+</mirror>
+```
 
 @org.junit.Test
     public void aa() throws BiuLinkPayException {
