@@ -9,6 +9,7 @@ import com.biulinkpay.sdk.vo.response.ChannelInResponseVo;
 import com.biulinkpay.sdk.vo.response.MerchantPaymentMethodResponseVo;
 import com.biulinkpay.sdk.vo.response.MerchantPaymentQueryResponseVo;
 import com.biulinkpay.sdk.vo.response.RateQueryResponseVo;
+import com.google.gson.reflect.TypeToken;
 
 import java.net.http.HttpClient;
 import java.time.Duration;
@@ -32,22 +33,27 @@ public class BiuLinkPayClient extends BiuLinkPayRequestUtil {
     }
 
     public BiuLinkPayOperation<String, APIResponse<MerchantPaymentMethodResponseVo>> paymentMethod() {
-        return requestData -> getRequest(PaymentUrl.paymentMethod + "?orderType=" + requestData, APIResponse.class);
+        return requestData -> getRequest(PaymentUrl.paymentMethod + "?orderType=" + requestData, new TypeToken<APIResponse<MerchantPaymentMethodResponseVo>>() {
+        });
     }
 
     public BiuLinkPayOperation<MerchantPaymentQueryRequestVo, APIResponse<MerchantPaymentQueryResponseVo>> paymentQuery() {
-        return requestData -> postRequest(PaymentUrl.queryUrl, requestData, APIResponse.class);
+        return requestData -> postRequest(PaymentUrl.queryUrl, requestData, new TypeToken<APIResponse<MerchantPaymentQueryResponseVo>>() {
+        });
     }
 
     public BiuLinkPayOperation<MerchantBuyRequestVo, APIResponse<ChannelInResponseVo>> buyOrder() {
-        return requestData -> postRequest(PaymentUrl.buyOrderUrl, requestData, APIResponse.class);
+        return requestData -> postRequest(PaymentUrl.buyOrderUrl, requestData, new TypeToken<APIResponse<ChannelInResponseVo>>() {
+        });
     }
 
     public BiuLinkPayOperation<MerchantSellRequestVo, APIResponse<ChannelOutResponseVo>> sellOrder() {
-        return requestData -> postRequest(PaymentUrl.sellOrderUrl, requestData, APIResponse.class);
+        return requestData -> postRequest(PaymentUrl.sellOrderUrl, requestData, new TypeToken<APIResponse<ChannelOutResponseVo>>() {
+        });
     }
 
     public BiuLinkPayOperation<RateRequestVo, APIResponse<RateQueryResponseVo>> rateQuery() {
-        return requestData -> postRequest(PaymentUrl.rateQueryUrl, requestData, APIResponse.class);
+        return requestData -> postRequest(PaymentUrl.rateQueryUrl, requestData, new TypeToken<APIResponse<RateQueryResponseVo>>() {
+        });
     }
 }

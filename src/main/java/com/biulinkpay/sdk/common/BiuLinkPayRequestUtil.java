@@ -3,6 +3,7 @@ package com.biulinkpay.sdk.common;
 import com.biulinkpay.sdk.url.PaymentUrl;
 import com.biulinkpay.sdk.vo.BiuLinkPayConfig;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -24,20 +25,20 @@ public class BiuLinkPayRequestUtil {
         this.biuLinkPayConfig = biuLinkPayConfig;
     }
 
-    protected <S, T> T postRequest(String endpoint, S data, Class<T> responseType) throws BiuLinkPayException {
+    protected <S, T> T postRequest(String endpoint, S data, TypeToken<T> typeToken) throws BiuLinkPayException {
         return handleRequest(
                 endpoint,
                 data,
-                response -> gson.fromJson(response, responseType),
+                response -> gson.fromJson(response, typeToken),
                 "POST"
         );
     }
 
-    protected <T> T getRequest(String endpoint, Class<T> responseType) throws BiuLinkPayException {
+    protected <T> T getRequest(String endpoint, TypeToken<T> typeToken) throws BiuLinkPayException {
         return handleRequest(
                 endpoint,
                 null,
-                response -> gson.fromJson(response, responseType),
+                response -> gson.fromJson(response, typeToken),
                 "GET"
         );
     }
