@@ -56,9 +56,9 @@ public class MerchantBuyRequestVo {
     private String fiatUnit;
 
     /**
-     * 超时时间
+     * 超时时间(秒)
      */
-    private BigDecimal expiredTime;
+    private Integer expiredTime;
 
     /**
      * 支付成功重定向地址
