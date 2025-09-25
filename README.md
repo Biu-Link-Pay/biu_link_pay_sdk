@@ -6,7 +6,7 @@ add the following dependencies to your 'pom. xml' file：
 <dependency>
     <groupId>com.biulinkpay</groupId>
     <artifactId>biu-link-pay-sdk</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
 </dependency>
 ```
 
