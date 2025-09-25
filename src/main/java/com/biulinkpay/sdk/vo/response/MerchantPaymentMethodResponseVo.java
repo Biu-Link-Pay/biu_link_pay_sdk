@@ -16,6 +16,7 @@ public class MerchantPaymentMethodResponseVo {
         private String img;
         private String detailsImg;
         private Integer sorts;
+        private Integer expires;
         private List<CryptoNetwork> cryptoNetworks;
     }
 
