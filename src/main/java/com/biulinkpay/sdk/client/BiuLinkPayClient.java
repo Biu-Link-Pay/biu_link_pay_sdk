@@ -5,14 +5,12 @@ import com.biulinkpay.sdk.common.BiuLinkPayRequestUtil;
 import com.biulinkpay.sdk.url.PaymentUrl;
 import com.biulinkpay.sdk.vo.BiuLinkPayConfig;
 import com.biulinkpay.sdk.vo.request.*;
-import com.biulinkpay.sdk.vo.response.ChannelInResponseVo;
-import com.biulinkpay.sdk.vo.response.MerchantPaymentMethodResponseVo;
-import com.biulinkpay.sdk.vo.response.MerchantPaymentQueryResponseVo;
-import com.biulinkpay.sdk.vo.response.RateQueryResponseVo;
+import com.biulinkpay.sdk.vo.response.*;
 import com.google.gson.reflect.TypeToken;
 
 import java.net.http.HttpClient;
 import java.time.Duration;
+import java.util.List;
 
 public class BiuLinkPayClient extends BiuLinkPayRequestUtil {
 
@@ -32,28 +30,53 @@ public class BiuLinkPayClient extends BiuLinkPayRequestUtil {
         );
     }
 
-    public BiuLinkPayOperation<String, APIResponse<MerchantPaymentMethodResponseVo>> paymentMethod() {
-        return requestData -> getRequest(PaymentUrl.paymentMethod + "?orderType=" + requestData, new TypeToken<APIResponse<MerchantPaymentMethodResponseVo>>() {
+    public BiuLinkPayOperation<String, List<FiatPaymentMethodResponseVo>> fiatPaymentMethod() {
+        return requestData -> getRequest(PaymentUrl.paymentMethod + "?orderType=" + requestData, new TypeToken<List<FiatPaymentMethodResponseVo>>() {
         });
     }
 
-    public BiuLinkPayOperation<MerchantPaymentQueryRequestVo, APIResponse<MerchantPaymentQueryResponseVo>> paymentQuery() {
-        return requestData -> postRequest(PaymentUrl.queryUrl, requestData, new TypeToken<APIResponse<MerchantPaymentQueryResponseVo>>() {
+    public BiuLinkPayOperation<String, MerchantPaymentMethodResponseVo> cryptoPaymentMethod() {
+        return requestData -> getRequest(PaymentUrl.paymentMethod + "?orderType=" + requestData, new TypeToken<MerchantPaymentMethodResponseVo>() {
         });
     }
 
-    public BiuLinkPayOperation<MerchantBuyRequestVo, APIResponse<ChannelInResponseVo>> buyOrder() {
-        return requestData -> postRequest(PaymentUrl.buyOrderUrl, requestData, new TypeToken<APIResponse<ChannelInResponseVo>>() {
+    public BiuLinkPayOperation<MerchantPaymentQueryRequestVo, MerchantPaymentQueryResponseVo> paymentQuery() {
+        return requestData -> postRequest(PaymentUrl.queryUrl, requestData, new TypeToken<MerchantPaymentQueryResponseVo>() {
         });
     }
 
-    public BiuLinkPayOperation<MerchantSellRequestVo, APIResponse<ChannelOutResponseVo>> sellOrder() {
-        return requestData -> postRequest(PaymentUrl.sellOrderUrl, requestData, new TypeToken<APIResponse<ChannelOutResponseVo>>() {
+    public BiuLinkPayOperation<MerchantBuyRequestVo, ChannelInResponseVo> buyOrder() {
+        return requestData -> postRequest(PaymentUrl.buyOrderUrl, requestData, new TypeToken<ChannelInResponseVo>() {
         });
     }
 
-    public BiuLinkPayOperation<RateRequestVo, APIResponse<RateQueryResponseVo>> rateQuery() {
-        return requestData -> postRequest(PaymentUrl.rateQueryUrl, requestData, new TypeToken<APIResponse<RateQueryResponseVo>>() {
+    public BiuLinkPayOperation<MerchantSellRequestVo, ChannelOutResponseVo> sellOrder() {
+        return requestData -> postRequest(PaymentUrl.sellOrderUrl, requestData, new TypeToken<ChannelOutResponseVo>() {
+        });
+    }
+
+    public BiuLinkPayOperation<RateRequestVo, RateQueryResponseVo> rateQuery() {
+        return requestData -> postRequest(PaymentUrl.rateQueryUrl, requestData, new TypeToken<RateQueryResponseVo>() {
+        });
+    }
+
+    public BiuLinkPayOperation<Void, List<BankInfoResponseVo>> bankQuery() {
+        return requestData -> getRequest(PaymentUrl.bankInfoUrl, new TypeToken<List<BankInfoResponseVo>>() {
+        });
+    }
+
+    public BiuLinkPayOperation<QueryRecipientRequestVo, RecipientInfoResponseVo> queryRecipient() {
+        return requestData -> getRequest(PaymentUrl.queryRecipientUrl, requestData, new TypeToken<RecipientInfoResponseVo>() {
+        });
+    }
+
+    public BiuLinkPayOperation<RecipientRequestVo, APIResponse> addRecipient() {
+        return requestData -> postRequest(PaymentUrl.addRecipientUrl, requestData, new TypeToken<APIResponse>() {
+        });
+    }
+
+    public BiuLinkPayOperation<Long, APIResponse> deleteRecipient() {
+        return requestData -> getRequest(PaymentUrl.deleteRecipientUrl + "?contactId=" + requestData, new TypeToken<APIResponse>() {
         });
     }
 }

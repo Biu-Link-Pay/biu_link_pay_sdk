@@ -1,16 +1,22 @@
 package com.biulinkpay.sdk.common;
 
+import com.biulinkpay.sdk.apiresponse.APIResponse;
 import com.biulinkpay.sdk.url.PaymentUrl;
 import com.biulinkpay.sdk.vo.BiuLinkPayConfig;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.net.URI;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
+import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class BiuLinkPayRequestUtil {
 
@@ -29,7 +35,7 @@ public class BiuLinkPayRequestUtil {
         return handleRequest(
                 endpoint,
                 data,
-                response -> gson.fromJson(response, typeToken),
+                response -> gson.fromJson(response, apiResponseMapping(typeToken.getType())),
                 "POST"
         );
     }
@@ -38,12 +44,35 @@ public class BiuLinkPayRequestUtil {
         return handleRequest(
                 endpoint,
                 null,
-                response -> gson.fromJson(response, typeToken),
+                response -> gson.fromJson(response, apiResponseMapping(typeToken.getType())),
                 "GET"
         );
     }
 
-    private <S, T> T handleRequest(String endpoint, S t, Function<String, T> responseProcessor, String method) throws BiuLinkPayException {
+    protected <S, T> T getRequest(String endpoint, S data, TypeToken<T> typeToken) throws BiuLinkPayException {
+        return handleRequest(
+                endpoint + "?" + getParams(data),
+                null,
+                response -> gson.fromJson(response, apiResponseMapping(typeToken.getType())),
+                "GET"
+        );
+    }
+
+    private Type apiResponseMapping(Type typeToken) {
+        return TypeToken.getParameterized(APIResponse.class, typeToken).getType();
+    }
+
+    private static <S> String getParams(S data) {
+        Gson gson = new Gson();
+        Map<String, Object> map = gson.fromJson(gson.toJson(data), Map.class);
+
+        return map.entrySet().stream()
+                .filter(e -> e.getValue() != null)
+                .map(e -> e.getKey() + "=" + URLEncoder.encode(e.getValue().toString(), StandardCharsets.UTF_8))
+                .collect(Collectors.joining("&"));
+    }
+
+    private <S, T> T handleRequest(String endpoint, S t, Function<String, APIResponse<T>> responseProcessor, String method) throws BiuLinkPayException {
         try {
 
             HttpRequest httpRequest = HttpRequest.newBuilder()
@@ -56,7 +85,11 @@ public class BiuLinkPayRequestUtil {
             HttpResponse<String> response = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() >= 200 && response.statusCode() < 300) {
-                return responseProcessor.apply(response.body());
+                APIResponse<T> apiResponse = responseProcessor.apply(response.body());
+                if (apiResponse.isError()) {
+                    throw new BiuLinkPayException(apiResponse.getMsg());
+                }
+                return apiResponse.getModel();
             }
 
             throw new BiuLinkPayException(

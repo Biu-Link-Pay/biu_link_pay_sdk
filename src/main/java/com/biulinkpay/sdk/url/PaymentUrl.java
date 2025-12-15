@@ -14,4 +14,12 @@ public interface PaymentUrl {
 
     String rateQueryUrl = "/api/pay/common/rateQuery";
 
+    String bankInfoUrl = "/api/pay/common/bankInfo";
+
+    String queryRecipientUrl="/api/pay/merchant/queryRecipient";
+
+    String addRecipientUrl="/api/pay/merchant/addRecipient";
+
+    String deleteRecipientUrl="/api/pay/merchant/deleteRecipient";
+
 }

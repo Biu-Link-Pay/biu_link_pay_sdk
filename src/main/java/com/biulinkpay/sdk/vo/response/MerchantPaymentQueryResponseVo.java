@@ -76,4 +76,9 @@ public class MerchantPaymentQueryResponseVo {
      * 失败原因
      */
     private String failReason;
+
+    /**
+     * 法币汇率
+     */
+    private BigDecimal payFiatExchangeRate;
 }

@@ -2,7 +2,6 @@ package com.biulinkpay.sdk.vo.request;
 
 import com.biulinkpay.sdk.enums.CurrencyTypeEnum;
 import com.biulinkpay.sdk.enums.DeductionMethodEnum;
-import com.biulinkpay.sdk.enums.ExchangeEnum;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -38,7 +37,7 @@ public class MerchantSellRequestVo {
     /**
      * 支付类型
      */
-    private ExchangeEnum payType;
+    private String payType;
 
     /**
      * 币种类型
@@ -74,4 +73,14 @@ public class MerchantSellRequestVo {
      * 扣款方式
      */
     private DeductionMethodEnum deductionMethod;
+
+    /**
+     * 支付参数
+     */
+    private String customParam;
+
+    /**
+     * 用户标记
+     */
+    private String userMark;
 }

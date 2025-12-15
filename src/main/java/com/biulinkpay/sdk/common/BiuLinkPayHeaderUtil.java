@@ -35,7 +35,9 @@ public class BiuLinkPayHeaderUtil {
             headers.put("BiuLinkPay-AppId", biuLinkPayConfig.getAppId());
             headers.put("BiuLinkPay-TimeStamp", currentTime);
             headers.put("BiuLinkPay-Nonce", nonce);
+            headers.put("BiuLinkPay-MerchantType", biuLinkPayConfig.getMerchantType());
             headers.put("BiuLinkPay-Signature", signature(biuLinkPayConfig.getSecret(), payload));
+
             return headers;
         } catch (Exception exception) {
             throw new RuntimeException(
