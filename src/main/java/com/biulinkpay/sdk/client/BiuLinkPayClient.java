@@ -70,13 +70,13 @@ public class BiuLinkPayClient extends BiuLinkPayRequestUtil {
         });
     }
 
-    public BiuLinkPayOperation<RecipientRequestVo, APIResponse> addRecipient() {
-        return requestData -> postRequest(PaymentUrl.addRecipientUrl, requestData, new TypeToken<APIResponse>() {
+    public BiuLinkPayOperation<RecipientRequestVo, Void> addRecipient() {
+        return requestData -> postRequest(PaymentUrl.addRecipientUrl, requestData, new TypeToken<Void>() {
         });
     }
 
-    public BiuLinkPayOperation<Long, APIResponse> deleteRecipient() {
-        return requestData -> getRequest(PaymentUrl.deleteRecipientUrl + "?contactId=" + requestData, new TypeToken<APIResponse>() {
+    public BiuLinkPayOperation<Long, Void> deleteRecipient() {
+        return requestData -> getRequest(PaymentUrl.deleteRecipientUrl + "?contactId=" + requestData, new TypeToken<Void>() {
         });
     }
 }
