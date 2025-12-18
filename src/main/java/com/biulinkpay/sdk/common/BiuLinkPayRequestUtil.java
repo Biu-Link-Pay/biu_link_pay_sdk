@@ -87,7 +87,7 @@ public class BiuLinkPayRequestUtil {
             if (response.statusCode() >= 200 && response.statusCode() < 300) {
                 APIResponse<T> apiResponse = responseProcessor.apply(response.body());
                 if (apiResponse.isError()) {
-                    throw new BiuLinkPayException(apiResponse.getMsg());
+                    throw new RuntimeException(apiResponse.getMsg());
                 }
                 return apiResponse.getModel();
             }
@@ -96,7 +96,9 @@ public class BiuLinkPayRequestUtil {
                     "BiuLinkPay API request failed: " + response.body(),
                     response.statusCode()
             );
-        } catch (Exception e) {
+        }catch (RuntimeException runtimeException){
+            throw new BiuLinkPayException(runtimeException.getMessage());
+        }catch (Exception e) {
             throw new BiuLinkPayException("BiuLinkPay API request failed", e);
         }
     }
