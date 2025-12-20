@@ -1,6 +1,5 @@
 package com.biulinkpay.sdk.client;
 
-import com.biulinkpay.sdk.apiresponse.APIResponse;
 import com.biulinkpay.sdk.common.BiuLinkPayRequestUtil;
 import com.biulinkpay.sdk.url.PaymentUrl;
 import com.biulinkpay.sdk.vo.BiuLinkPayConfig;
@@ -57,6 +56,11 @@ public class BiuLinkPayClient extends BiuLinkPayRequestUtil {
 
     public BiuLinkPayOperation<RateRequestVo, RateQueryResponseVo> rateQuery() {
         return requestData -> postRequest(PaymentUrl.rateQueryUrl, requestData, new TypeToken<RateQueryResponseVo>() {
+        });
+    }
+
+    public BiuLinkPayOperation<FiatRateRequestVo, FiatRateQueryResponseVo> fiatRateQuery() {
+        return requestData -> postRequest(PaymentUrl.fiatRateQueryUrl, requestData, new TypeToken<FiatRateQueryResponseVo>() {
         });
     }
 

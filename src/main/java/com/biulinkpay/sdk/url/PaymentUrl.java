@@ -2,7 +2,7 @@ package com.biulinkpay.sdk.url;
 
 public interface PaymentUrl {
 
-    String domain = "https://api.biulinkpay.online";
+    String domain = "http://localhost:9999";
 
     String queryUrl = "/api/pay/merchant/paymentQuery";
 
@@ -13,6 +13,8 @@ public interface PaymentUrl {
     String paymentMethod = "/api/pay/merchant/paymentMethods";
 
     String rateQueryUrl = "/api/pay/common/rateQuery";
+
+    String fiatRateQueryUrl = "/api/pay/common/fiatRateQuery";
 
     String bankInfoUrl = "/api/pay/common/bankInfo";
 
