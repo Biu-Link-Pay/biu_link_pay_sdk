@@ -23,6 +23,5 @@ public interface PaymentUrl {
     String addRecipientUrl="/api/pay/merchant/addRecipient";
 
     String deleteRecipientUrl="/api/pay/merchant/deleteRecipient";
-
-
+    
 }
