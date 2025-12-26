@@ -6,7 +6,7 @@ add the following dependencies to your 'pom. xml' file：
 <dependency>
     <groupId>com.biulinkpay</groupId>
     <artifactId>biu-link-pay-sdk</artifactId>
-    <version>1.0.6</version>
+    <version>1.1.4</version>
 </dependency>
 ```
 
@@ -27,8 +27,9 @@ add the following dependencies to your 'pom. xml' file：
 
         BiuLinkPayClient biuLinkPayClient = new BiuLinkPayClient(
                 BiuLinkPayConfig.builder().
-                        appId("FEA21349995B45929AA26EC1AB6C1DA0").
-                        secret("Eh1+2XmwSWZ8HJ8a98okMIux6GqWHZRPhe1vAwb8ziI=").
+                        appId("appId").
+                        secret("secret").
+                        merchantType(MerchantType.FIAT).
                         build()
         );
 
