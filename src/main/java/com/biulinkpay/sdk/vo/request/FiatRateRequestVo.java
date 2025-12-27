@@ -44,4 +44,8 @@ public class FiatRateRequestVo {
      */
     private DeductionMethodEnum deductionMethod;
 
+    /**
+     * 支付方式
+     */
+    private String methodCode;
 }

@@ -20,6 +20,8 @@ public class FiatPaymentMethodResponseVo {
         private String methodName;
         private BigDecimal minLimit;
         private BigDecimal maxLimit;
+        private BigDecimal fixedFee;
+        private BigDecimal feeRatio;
         private String logoUrl;
         private String remark;
         private Integer expireTime;
