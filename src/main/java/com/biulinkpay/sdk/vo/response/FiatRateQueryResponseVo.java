@@ -35,5 +35,6 @@ public class FiatRateQueryResponseVo {
         private BigDecimal feeRatio;
         private BigDecimal fixedFee;
         private BigDecimal amount;
+        private String currency;
     }
 }
