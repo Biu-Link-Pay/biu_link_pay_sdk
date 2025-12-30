@@ -64,8 +64,8 @@ public class BiuLinkPayClient extends BiuLinkPayRequestUtil {
         });
     }
 
-    public BiuLinkPayOperation<Void, List<BankInfoResponseVo>> bankQuery() {
-        return requestData -> getRequest(PaymentUrl.bankInfoUrl, new TypeToken<List<BankInfoResponseVo>>() {
+    public BiuLinkPayOperation<String, List<BankInfoResponseVo>> bankQuery() {
+        return requestData -> getRequest(PaymentUrl.bankInfoUrl + "?countryCode=" + (null != requestData ? requestData : ""), new TypeToken<List<BankInfoResponseVo>>() {
         });
     }
 

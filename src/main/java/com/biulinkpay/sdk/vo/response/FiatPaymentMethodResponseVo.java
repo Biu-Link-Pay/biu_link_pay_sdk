@@ -35,6 +35,8 @@ public class FiatPaymentMethodResponseVo {
         private String label;
         private boolean required;
         private String type;
+        private Integer minLength;
+        private Integer maxLength;
         private List<String> options;
         private String placeholder;
     }
