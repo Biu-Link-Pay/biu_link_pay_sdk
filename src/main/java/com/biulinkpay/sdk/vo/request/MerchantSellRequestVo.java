@@ -83,4 +83,15 @@ public class MerchantSellRequestVo {
      * 用户标记
      */
     private String userMark;
+
+    /**
+     * 邮箱
+     */
+    private String email;
+
+    /**
+     * 用户编号
+     */
+    private String userNum;
+
 }
