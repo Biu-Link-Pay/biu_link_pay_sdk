@@ -94,4 +94,8 @@ public class MerchantSellRequestVo {
      */
     private String userNum;
 
+    /**
+     * 源法币单位
+     */
+    private String sourceFiatUnit;
 }
