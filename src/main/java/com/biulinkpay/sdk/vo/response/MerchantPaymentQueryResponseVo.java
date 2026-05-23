@@ -91,4 +91,9 @@ public class MerchantPaymentQueryResponseVo {
      * 法币汇率
      */
     private BigDecimal payFiatExchangeRate;
+
+    /**
+     * 地址
+     */
+    private String address;
 }
