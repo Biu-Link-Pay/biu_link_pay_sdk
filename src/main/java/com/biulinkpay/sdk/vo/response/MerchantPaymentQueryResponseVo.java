@@ -38,6 +38,16 @@ public class MerchantPaymentQueryResponseVo {
     private BigDecimal orderAmount;
 
     /**
+     * 数币金额
+     */
+    private BigDecimal actualPayAmount;
+
+    /**
+     * 法币单位
+     */
+    private String fiatUnit;
+
+    /**
      * 订单类型 入账，退款
      */
     private String orderType;
