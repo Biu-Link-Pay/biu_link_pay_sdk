@@ -3,6 +3,7 @@ package com.biulinkpay.sdk.vo.request;
 import com.biulinkpay.sdk.enums.CurrencyTypeEnum;
 import com.biulinkpay.sdk.enums.DeductionMethodEnum;
 import com.biulinkpay.sdk.enums.ExchangeEnum;
+import com.biulinkpay.sdk.enums.TerminalTypeEnum;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -89,4 +90,20 @@ public class MerchantBuyRequestVo {
      * 扣款方式
      */
     private DeductionMethodEnum deductionMethod;
+
+    /**
+     * 终端类型
+     */
+    private TerminalTypeEnum terminalType;
+
+    /**
+     * 商品详情
+     */
+    private Good goods;
+
+    @Data
+    public static class Good {
+        private String goodsName;
+        private String goodsDetail;
+    }
 }
