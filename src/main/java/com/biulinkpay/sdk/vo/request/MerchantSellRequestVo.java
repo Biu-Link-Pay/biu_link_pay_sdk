@@ -2,6 +2,7 @@ package com.biulinkpay.sdk.vo.request;
 
 import com.biulinkpay.sdk.enums.CurrencyTypeEnum;
 import com.biulinkpay.sdk.enums.DeductionMethodEnum;
+import com.biulinkpay.sdk.enums.TerminalTypeEnum;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -98,4 +99,9 @@ public class MerchantSellRequestVo {
      * 源法币单位
      */
     private String sourceFiatUnit;
+
+    /**
+     * 终端类型
+     */
+    private TerminalTypeEnum terminalType;
 }
